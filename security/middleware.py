@@ -902,7 +902,9 @@ class ContentSecurityPolicyMiddleware(MiddlewareMixin):
         # choose headers based enforcement mode
         is_ie = False
         if 'HTTP_USER_AGENT' in request.META:
-            parsed_ua = user_agent_parser.ParseUserAgent(request.META['HTTP_USER_AGENT'])
+            parsed_ua = user_agent_parser.ParseUserAgent(
+                request.META['HTTP_USER_AGENT']
+            )
             is_ie = parsed_ua['family'] == 'IE'
 
         csp_header = 'Content-Security-Policy'
@@ -1317,6 +1319,7 @@ class LoginRequiredMiddleware(BaseMiddleware, CustomLogoutMixin):
 
         return HttpResponseRedirect(login_url)
 
+
 class ReferrerPolicyMiddleware(BaseMiddleware):
     """
     Sends Referrer-Policy HTTP header that controls when the browser will set
@@ -1340,9 +1343,9 @@ class ReferrerPolicyMiddleware(BaseMiddleware):
 
     OPTIONAL_SETTINGS = ("REFERRER_POLICY",)
 
-    OPTIONS = [ 'no-referrer', 'no-referrer-when-downgrade', 'origin',
-    'origin-when-cross-origin', 'same-origin', 'strict-origin',
-    'strict-origin-when-cross-origin', 'unsafe-url', 'off' ]
+    OPTIONS = ['no-referrer', 'no-referrer-when-downgrade', 'origin',
+               'origin-when-cross-origin', 'same-origin', 'strict-origin',
+               'strict-origin-when-cross-origin', 'unsafe-url', 'off']
 
     DEFAULT = 'same-origin'
 

@@ -1080,6 +1080,7 @@ class DoNotTrackTests(TestCase):
         self.dnt.process_response(self.request, self.response)
         self.assertNotIn('DNT', self.response)
 
+
 class ReferrerPolicyTests(TestCase):
 
     def test_option_set(self):
@@ -1102,7 +1103,10 @@ class ReferrerPolicyTests(TestCase):
     def test_no_referrer_when_downgrade_setting(self):
         with self.settings(REFERRER_POLICY='no-referrer-when-downgrade'):
             response = self.client.get('/accounts/login/')
-            self.assertEqual(response['Referrer-Policy'], 'no-referrer-when-downgrade')
+            self.assertEqual(
+                response['Referrer-Policy'],
+                'no-referrer-when-downgrade',
+            )
 
     def test_origin_setting(self):
         with self.settings(REFERRER_POLICY='origin'):
@@ -1112,7 +1116,10 @@ class ReferrerPolicyTests(TestCase):
     def test_origin_when_cross_origin_setting(self):
         with self.settings(REFERRER_POLICY='origin-when-cross-origin'):
             response = self.client.get('/accounts/login/')
-            self.assertEqual(response['Referrer-Policy'], 'origin-when-cross-origin')
+            self.assertEqual(
+                response['Referrer-Policy'],
+                'origin-when-cross-origin',
+            )
 
     def test_same_origin_setting(self):
         with self.settings(REFERRER_POLICY='same-origin'):
@@ -1127,7 +1134,10 @@ class ReferrerPolicyTests(TestCase):
     def test_strict_origin_when_cross_origin_setting(self):
         with self.settings(REFERRER_POLICY='strict-origin-when-cross-origin'):
             response = self.client.get('/accounts/login/')
-            self.assertEqual(response['Referrer-Policy'], 'strict-origin-when-cross-origin')
+            self.assertEqual(
+                response['Referrer-Policy'],
+                'strict-origin-when-cross-origin'
+            )
 
     def test_unsafe_url_setting(self):
         with self.settings(REFERRER_POLICY='unsafe-url'):
