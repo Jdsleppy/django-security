@@ -8,7 +8,7 @@ This package offers a number of models, views, middlewares and forms to facilita
 
 Automatically generated documentation of `django-security` is available on Read The Docs:
 
-* [Django-security documentation](http://django-security.readthedocs.org/en/latest/)
+* [Django-security documentation](http://django-security.readthedocs.org/en/master/)
 
 # Requirements
 
@@ -118,6 +118,11 @@ or minimum configuration.
 <td><a href="http://django-security.readthedocs.org/en/latest/#security.middleware.P3PPolicyMiddleware">P3PPolicyMiddleware</a>
 <td><b>DEPRECATED: </b>Will be removed in future releases.<br/>Adds the HTTP header attribute specifying compact P3P policy.
 <td>Required.
+
+<tr>
+<td><a href="http://django-security.readthedocs.org/en/latest/#security.middleware.ReferrerPolicyMiddleware">ReferrerPolicyMiddleware</a>
+<td>Specify when the browser will set a `Referer` header.
+<td>Optional.
 
 <tr>
 <td><a href="http://django-security.readthedocs.org/en/latest/#security.middleware.SessionExpiryPolicyMiddleware">SessionExpiryPolicyMiddleware</a>
